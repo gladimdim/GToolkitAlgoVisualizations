@@ -21,6 +21,7 @@ aNumber < median ifTrue: [
 	    right add: aNumber. right sort.
 		right size - left size > 1 ifTrue: [ left addLast: right first. right removeFirst ].
 	].
+(left size > right size) ifTrue: [right addFirst: left last. left removeLast].
 
 ]
 
@@ -32,5 +33,5 @@ right := OrderedCollection new.
 
 { #category : #accessing }
 MedianCounter >> median [
-(left size = right size) ifTrue: [ ^ left last + right first / 2 ] ifFalse: [ ^ right first  ].
+(left size = right size) ifTrue: [ ^ (left last + right first / 2) asFloat] ifFalse: [ ^ right first asFloat  ].
 ]
